@@ -9,7 +9,8 @@ set $i3path ~/.i3
 set $i3multipath ~/.i3/i3_wm_multi_disp_scripts
 
 # set default desktop layout (default is tiling)
-workspace_layout stacked
+#workspace_layout stacked
+workspace_layout tabbed
 
 # Configure border style <normal|1pixel|pixel xx|none|pixel>
 new_window pixel 1
@@ -103,9 +104,13 @@ mode "resize" {
 }
 
 # focus the parent container
-bindsym $mod+a focus parent
+# bindsym $mod+a focus parent
 # focus the child container
-bindsym $mod+d focus child
+# bindsym $mod+d focus child
+
+bindsym $mod+d exec "rofi -show-icons -modi combi -show combi -combi-modi drun,run"
+bindsym $mod+a exec  rofi -show-icons -show window
+
 # change container layout 
 bindsym $mod+e layout toggle all
 # enter fullscreen mode for the focused container
@@ -312,7 +317,7 @@ bindsym $mod+o               exec $i3multipath/.env/bin/python $i3multipath/rena
 bindsym F8                   exec $i3multipath/.env/bin/python $i3multipath/bring_container_to_current_workspace.py
 bindsym $mod+Tab             exec $i3multipath/switcher.sh
 
-# rofi bindings
+# s
 bindsym F9 exec "rofi -show-icons -modi combi -show combi -combi-modi drun,run"
 bindsym F12 exec  rofi -show-icons -show window
 
@@ -336,7 +341,7 @@ bindsym Shift+XF86MonBrightnessUp exec $i3path/utils/brightness_gui.sh
 bindsym Shift+XF86MonBrightnessDown exec $i3path/utils/brightness_gui.sh
 
 # create initial workspaces
-exec --no-startup-id $i3multipath/.env/bin/python $i3multipath/create_new_project.py main
+# exec --no-startup-id $i3multipath/.env/bin/python $i3multipath/create_new_project.py main
 
 # Autostart applications
 exec --no-startup-id dropbox start
@@ -363,6 +368,7 @@ exec --no-startup-id terminator
 exec --no-startup-id nm-applet
 
 # exec --no-startup-id nemo
+exec --no-startup-id imwheel
 
 popup_during_fullscreen leave_fullscreen
 show_marks yes
