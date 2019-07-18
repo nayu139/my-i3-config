@@ -305,6 +305,9 @@ mode "workspace" {
 #
 bindsym $mod+w mode "workspace"
 
+# switch_screen.sh
+bindsym $mod+Shift+s exec $i3path/switch_screen.sh
+
 # Make the currently focused window a scratchpad
 bindsym $mod+Shift+z move scratchpad
 
@@ -354,7 +357,7 @@ exec --no-startup-id xfce4-power-manager
 exec --no-startup-id pamac-tray
 exec --no-startup-id /usr/bin/ibus-daemon -x -d
 #exec --no-startup-id /usr/bin/fcitx-autostart
-exec_always --no-startup-id if [ $(xrandr|grep HDMI1|cut -d ' ' -f 2) = 'connected' ];then xrandr --output eDP1 --primary --mode 1920x1080 --pos 1920x0 --rotate normal --output HDMI1 --mode 1920x1080 --pos 0x0 --rotate normal --output VIRTUAL1 --off;else xrandr --output eDP1 --primary --mode 1920x1080 --pos 0x0 --rotate normal --output HDMI1 --off --output VIRTUAL1 --off;fi
+exec_always --no-startup-id xrandr --output eDP1 --primary --mode 1920x1080 --pos 1920x0 --rotate normal --output HDMI1 --mode 1920x1080 --pos 0x0 --rotate normal --output VIRTUAL1 --off
 # exec --no-startup-id clipit
 # exec_always --no-startup-id sbxkb
 # exec --no-startup-id start_conky_maia
